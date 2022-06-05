@@ -1,7 +1,9 @@
 import Component from "./utils/Functor.jsx";
+import FunctorLaw from "./utils/functorLaw";
 import Favicon from "./favicon.svg";
+
 const compose2 = (f) => (g) => (x) => f(g(x));
-const Button = (props) => <button {...props} />;
+const Button = (props) => (props.isHidden ? null : <button {...props} />);
 
 const wrapWithDiv = (node) => <div>{node}</div>;
 const withFavicon = (node) => (
@@ -29,8 +31,10 @@ const WrappedWithDiv = Component(Button)
   .contramap(spaces2Rem)
   .contramap(compose2(defaultProps)(fixedProps)).run;
 
-const App = () => {
-  return <WrappedWithDiv>Hello world</WrappedWithDiv>;
+const App2 = () => {
+  return <WrappedWithDiv isHidden>Hello world</WrappedWithDiv>;
 };
+
+const App = () => <FunctorLaw />;
 
 export default App;
