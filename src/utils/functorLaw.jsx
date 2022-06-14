@@ -6,7 +6,8 @@ const Button = (props) => (props.isHidden ? null : <button {...props} />);
 const id = (x) => x;
 
 const IdLaw1 = Component(Button).map(id).run;
-const IdLaw2 = id(Component(Button)).run;
+const IdLaw2 = Component(id(Button)).run;
+const ButtonComponent = Component(Button).run;
 
 const wrapWithDiv = (node) => <div>{node}</div>;
 const withFavicon = (node) => (
@@ -24,8 +25,10 @@ const CompositionLaw2 = Component(Button).map(
 const FunctorLaw = () => {
   return (
     <>
+      <ButtonComponent>Hello</ButtonComponent>
       <IdLaw1>Hello</IdLaw1>
       <IdLaw2>Hello</IdLaw2>
+      <Button isHidden>Hello</Button>
       <IdLaw1 isHidden>Hello</IdLaw1>
       <IdLaw2 isHidden>Hello</IdLaw2>
       <CompositionLaw1>World</CompositionLaw1>
