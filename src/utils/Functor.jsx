@@ -6,9 +6,8 @@ const Component = (run) => ({
   map: (g) => {
     return Component((x) => {
       const renderRes = run(x);
-      return renderRes == null ? null : g(renderRes);
+      return renderRes != null ? g(renderRes) : null;
     });
-    return Component(compose2(g)(run));
   },
   //contramap :: Component (b -> c) ~> (a -> b) -> Component(a -> c)
   contramap: (g) => Component(compose2(run)(g)),

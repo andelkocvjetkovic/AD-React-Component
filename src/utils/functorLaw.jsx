@@ -6,7 +6,7 @@ const Button = (props) => (props.isHidden ? null : <button {...props} />);
 const id = (x) => x;
 
 const IdLaw1 = Component(Button).map(id).run;
-const IdLaw2 = Component(id(Button)).run;
+const IdLaw2 = Component(Button).run;
 const ButtonComponent = Component(Button).run;
 
 const wrapWithDiv = (node) => <div>{node}</div>;
@@ -25,16 +25,16 @@ const CompositionLaw2 = Component(Button).map(
 const FunctorLaw = () => {
   return (
     <>
-      <ButtonComponent>Hello</ButtonComponent>
-      <IdLaw1>Hello</IdLaw1>
-      <IdLaw2>Hello</IdLaw2>
-      <Button isHidden>Hello</Button>
-      <IdLaw1 isHidden>Hello</IdLaw1>
-      <IdLaw2 isHidden>Hello</IdLaw2>
-      <CompositionLaw1>World</CompositionLaw1>
-      <CompositionLaw2>World</CompositionLaw2>
-      <CompositionLaw1 isHidden>World</CompositionLaw1>
-      <CompositionLaw2 isHidden>World</CompositionLaw2>
+      <ButtonComponent>IdLaw</ButtonComponent>
+      <IdLaw1>IdLaw</IdLaw1>
+      <IdLaw2>IdLaw</IdLaw2>
+      <Button isHidden>IdLaw</Button>
+      <IdLaw1 isHidden>IdLaw</IdLaw1>
+      <IdLaw2 isHidden>IdLaw</IdLaw2>
+      <CompositionLaw1>ComposeLaw</CompositionLaw1>
+      <CompositionLaw2>ComposeLaw</CompositionLaw2>
+      <CompositionLaw1 isHidden>ComposeLaw</CompositionLaw1>
+      <CompositionLaw2 isHidden>ComposeLaw</CompositionLaw2>
     </>
   );
 };
